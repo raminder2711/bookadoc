@@ -173,3 +173,4 @@ Implement OAuth or third-party authentication methods (Google, Facebook).
 Use HTTPS for secure communication.
 
 "# bookadoc" 
+"# bookadoc" 
