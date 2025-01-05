@@ -1,5 +1,5 @@
 import validator from 'validator'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import userModel from '../models/userModel.js'
 import jwt from 'jsonwebtoken'
 import {v2 as cloudinary} from 'cloudinary'
@@ -30,8 +30,8 @@ const registerUser = async (req, res) => {
         }
 
         // hashing user password
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(password, salt)
+        const salt = bcrypt.genSaltSync(10)
+        const hashedPassword = bcrypt.hashSync(password, salt)
 
         const userData = {
             name,
@@ -64,7 +64,7 @@ const loginUser = async (req, res) => {
             return res.json({ success: false, message: 'User does not exist' })
         }
 
-        const isMatch = await bcrypt.compare(password, user.password)
+        const isMatch = bcrypt.compareSync(password, user.password)
 
         if (isMatch) {
             const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET)

@@ -1,5 +1,5 @@
 import doctorModel from "../models/doctorModel.js"
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import appointmentModel from "../models/appointmentModel.js"
 
@@ -45,7 +45,7 @@ const loginDoctor = async (req, res) => {
             return res.json({ success: false, message: 'Invalid Credentials' })
         }
 
-        const isMatch = await bcrypt.compare(password, doctor.password)
+        const isMatch = bcrypt.compareSync(password, doctor.password)
 
         if (isMatch) {
             const token = jwt.sign({ id: doctor._id }, process.env.JWT_SECRET)
