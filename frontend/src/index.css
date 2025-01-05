@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Outfit:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  font-family: Outfit;
+}
+
+
+/* Ensure toast notifications are always on top */
+.Toastify__toast-container {
+  z-index: 9999 !important; /* Ensures toast is above all other content */
+  position: fixed; /* Keeps toast notifications in a fixed position */
+  top: 10px; /* Adjust top position */
+  right: 10px; /* Adjust right position */
+  pointer-events: none; /* Prevent toasts from blocking interactions with other content */
+  display: flex; /* Align toasts properly */
+  flex-direction: column; /* Stack toasts vertically */
+  gap: 10px; /* Space between toasts */
+}
+
+/* Styling for each individual toast */
+.Toastify__toast {
+  font-family: 'Outfit'; /* Ensure toast uses the correct font */
+  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  padding: 4px 15px; /* Reduced padding for a smaller pop-up */
+  min-width: 150px; /* Reduced minimum width */
+  color: #fff; /* White text on all toasts */
+  background-color: #333; /* Default background color for all toasts */
+  font-size: 14px; /* Slightly smaller text */
+  opacity: 0.9; /* Slight transparency */
+  transition: opacity 0.5s ease-out; /* Smooth transition for disappearing effect */
+}
+
+/* Styling for success toasts */
+.Toastify__toast--success {
+  background-color: #4CAF50; /* Green background for success */
+  color: white;
+}
+
+/* Styling for error toasts */
+.Toastify__toast--error {
+  background-color: #f44336; /* Red background for error */
+  color: white;
+}
+
+/* Styling for info toasts */
+.Toastify__toast--info {
+  background-color: #2196F3; /* Blue background for info */
+  color: white;
+}
+
+/* Styling for warning toasts */
+.Toastify__toast--warning {
+  background-color: #FF9800; /* Orange background for warnings */
+  color: white;
+}
+
+/* Add hover effects or animations */
+.Toastify__toast:hover {
+  opacity: 1; /* Full opacity on hover */
+  cursor: pointer; /* Show a pointer cursor on hover */
+}
+
+/* Styling for the progress bar */
+.Toastify__progress-bar {
+  background-color: #fff; /* White progress bar */
+  height: 5px; /* Thinner progress bar */
+  border-radius: 4px; /* Rounded corners */
+}
+
+
+.active hr{
+  @apply block
+}
+
+::-webkit-scrollbar{
+  @apply hidden
+}
+
+@media (max-width:740px) {
+  .active p{
+    @apply text-white bg-primary
+  }
+}
